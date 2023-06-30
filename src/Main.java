@@ -2,16 +2,19 @@
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Movie myMovie = new Movie();
+        myMovie.title = "Harry Potter e o Enígima do Principe";
+        myMovie.releaseName = 2016;
+        myMovie.duration = 205;
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        myMovie.DisplaysDataSheet();
+        myMovie.Rates(4.5);
+        myMovie.Rates(10);
+        myMovie.Rates(8.9);
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
-        }
+        System.out.println(myMovie.totalRating);
+        System.out.println(myMovie.rating);
+        System.out.println(myMovie.TakeMedia());
+
     }
 }
