@@ -1,4 +1,6 @@
+import br.com.alura.screenmatch.calculations.Recommendation;
 import br.com.alura.screenmatch.calculations.TimeCalculator;
+import br.com.alura.screenmatch.models.Episode;
 import br.com.alura.screenmatch.models.Movie;
 import br.com.alura.screenmatch.models.Series;
 
@@ -29,6 +31,12 @@ public class Main {
         calculator.Includes(mySeries);
         calculator.getTotalTime();
         System.out.println(calculator.getTotalTime());
+
+        Episode myepisode = new Episode();
+
+        Recommendation recommendation = new Recommendation();
+        recommendation.Filters(myMovie);
+        recommendation.Filters(myepisode);
 
     }
 }

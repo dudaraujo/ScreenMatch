@@ -1,16 +1,22 @@
 package br.com.alura.screenmatch.models;
 
-public class Movie extends Title {
+import br.com.alura.screenmatch.calculations.Sortable;
 
-    private String diretor;
+public class Movie extends Title implements Sortable {
 
-    public String getDiretor() {
-        return diretor;
+    private String director;
+
+    public String getDirector() {
+        return director;
     }
 
-    public void setDiretor(String diretor){
-        this.diretor = diretor;
+    public void setDirector(String director){
+        this.director = director;
     }
 
+    @Override
+    public int getClassification() {
+        return (int) TakeMedia() / 2;
+    }
 }
 
