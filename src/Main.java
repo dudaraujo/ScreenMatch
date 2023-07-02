@@ -1,11 +1,11 @@
+import br.com.alura.screenmatch.calculations.TimeCalculator;
 import br.com.alura.screenmatch.models.Movie;
+import br.com.alura.screenmatch.models.Series;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
         Movie myMovie = new Movie();
-        myMovie.setTitle("Harry Potter e o Enígima do Principe") ;
+        myMovie.setName("Harry Potter e o Enígima do Principe") ;
         myMovie.setReleaseYear(2016);
         myMovie.setDuration(205);
 
@@ -16,6 +16,19 @@ public class Main {
 
         System.out.println(myMovie.getTotalRating());
         System.out.println(myMovie.TakeMedia());
+
+        Series mySeries = new Series();
+        mySeries.setName("Sandman");
+        mySeries.setSeasons(2);
+        mySeries.setEpisodesPerSeason(11);
+        mySeries.setMinutesPerEpisode(50);
+        System.out.println("Duração em minutos para maratonar: " + mySeries.getDuration());
+
+        TimeCalculator calculator = new TimeCalculator();
+        calculator.Includes(myMovie);
+        calculator.Includes(mySeries);
+        calculator.getTotalTime();
+        System.out.println(calculator.getTotalTime());
 
     }
 }
