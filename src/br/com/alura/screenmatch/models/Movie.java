@@ -6,6 +6,10 @@ public class Movie extends Title implements Sortable {
 
     private String director;
 
+    public Movie(String name, int releaseYear) {
+        super(name, releaseYear);
+    }
+
     public String getDirector() {
         return director;
     }

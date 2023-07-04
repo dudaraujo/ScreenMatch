@@ -8,19 +8,13 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        Movie myMovie = new Movie();
-        myMovie.setName("Harry Potter e o Enígima do Principe") ;
-        myMovie.setReleaseYear(2016);
+        Movie myMovie = new Movie("Harry Potter e o Enígima do Principe", 2016);
         myMovie.setDuration(205);
 
-        Movie dudaMovie = new Movie();
-        dudaMovie.setName("O Diabo veste Prada") ;
-        dudaMovie.setReleaseYear(2016);
+        Movie dudaMovie = new Movie("O Diabo veste Prada", 2016);
         dudaMovie.setDuration(205);
 
-        Movie fefeMovie = new Movie();
-        fefeMovie.setName("Truque de Mestre") ;
-        fefeMovie.setReleaseYear(2016);
+        Movie fefeMovie = new Movie("Truque de Mestre", 2016);
         fefeMovie.setDuration(205);
 
         myMovie.DisplaysDataSheet();
@@ -31,8 +25,7 @@ public class Main {
         System.out.println(myMovie.getTotalRating());
         System.out.println(myMovie.TakeMedia());
 
-        Series mySeries = new Series();
-        mySeries.setName("Sandman");
+        Series mySeries = new Series("Sandman", 2022);
         mySeries.setSeasons(2);
         mySeries.setEpisodesPerSeason(11);
         mySeries.setMinutesPerEpisode(50);
