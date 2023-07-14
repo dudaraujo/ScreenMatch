@@ -1,5 +1,6 @@
 package br.com.alura.screenmatch.main;
 
+import br.com.alura.screenmatch.exception.ReleaseYearConversionException;
 import br.com.alura.screenmatch.models.Title;
 import br.com.alura.screenmatch.models.TitleOmdb;
 import com.google.gson.FieldNamingPolicy;
@@ -22,24 +23,37 @@ public class MainSearch {
         System.out.println("O que você quer assistir hoje?");
         var search = read.nextLine();
 
-        String apiAddress = ("https://www.omdbapi.com/?t=" + search + "&apikey=9d72df40");
+        try{
+            String apiAddress = ("https://www.omdbapi.com/?t=" + search.replace(" ", "+") + "&apikey=9d72df40");
 
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(apiAddress))
-                .build();
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(apiAddress))
+                    .build();
 
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        String json = response.body();
-        System.out.println(json);
+            String json = response.body();
+            System.out.println(json);
 
-        Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();
+            Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();
 
-        TitleOmdb myTitleOmdb = gson.fromJson(json, TitleOmdb. class);
-        System.out.println(myTitleOmdb);
+            TitleOmdb myTitleOmdb = gson.fromJson(json, TitleOmdb.class);
+            System.out.println(myTitleOmdb);
 
-        Title myTitle = new Title(myTitleOmdb);
-        System.out.println(myTitle);
+
+            Title myTitle = new Title(myTitleOmdb);
+            System.out.println(myTitle);
+        } catch (NumberFormatException e) {
+            System.out.println("Aconteceu um erro: ");
+            System.out.println(e.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.out.println("Existe um argumento ilegal na URI");
+        } catch (ReleaseYearConversionException e) {
+            System.out.println(e.getMessage());
+        }
+
+
+
     }
 }
